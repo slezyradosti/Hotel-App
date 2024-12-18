@@ -21,11 +21,6 @@ namespace Hotel.API.Controllers
             {
                 var hotels = await _hotelService.GetAllHotelsAsync();
 
-                if (hotels is null) 
-                {
-                    return NotFound("No hotels found");
-                }
-
                 return Ok(hotels);
             }
             catch (Exception ex)
