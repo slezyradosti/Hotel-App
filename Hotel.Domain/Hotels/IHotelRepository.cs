@@ -2,5 +2,6 @@
 {
     public interface IHotelRepository
     {
+        Task<IEnumerable<Hotel>> GetAllHotelsAsync();
     }
 }

@@ -1,3 +1,7 @@
+using Hotel.Domain.Hotels;
+using Hotel.Domain.Rooms;
+using Hotel.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IHotelRepository, HotelRepository>(i
+        => new HotelRepository(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "resources", "hotels.json")));
+builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 
 var app = builder.Build();
 
