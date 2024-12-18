@@ -1,3 +1,5 @@
+using Hotel.Application.Services;
+using Hotel.Application.Services.Interfaces;
 using Hotel.Domain.Hotels;
 using Hotel.Domain.Rooms;
 using Hotel.Infrastructure.Repositories;
@@ -14,6 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IHotelRepository, HotelRepository>(i
         => new HotelRepository(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "resources", "hotels.json")));
 builder.Services.AddScoped<IRoomRepository, RoomRepository>();
+builder.Services.AddScoped<IHotelService, HotelService>();
 
 var app = builder.Build();
 
