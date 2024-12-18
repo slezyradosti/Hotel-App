@@ -30,5 +30,25 @@ namespace Hotel.Infrastructure.Repositories
                 throw ex;
             }
         }
+
+        public async Task<Domain.Hotels.Hotel?> GetHotelByIdAsync(int hotelId)
+        {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            };
+
+            try
+            {
+                var jsonData = await File.ReadAllTextAsync(_filePath);
+                var hotels = JsonSerializer.Deserialize<IEnumerable<Domain.Hotels.Hotel>>(jsonData, options);
+                return hotels?.FirstOrDefault(x => x.Id == hotelId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("HotelRepository GetHotelById", ex.Message);
+                throw ex;
+            }
+        }
     }
 }

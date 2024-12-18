@@ -33,5 +33,30 @@ namespace Hotel.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new { ex.Message });
             }
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetHotelById(int id)
+        {
+            if (id <= 0) 
+            {
+                return BadRequest(new { Message = "ID must be a positive integer" });
+            }
+
+            try
+            {
+                var hotel = await _hotelService.GetHotelById(id);
+
+                if (hotel is null)
+                {
+                    return NotFound("Hotel not found");
+                }
+
+                return Ok(hotel);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { ex.Message });
+            }
+        }
     }
 }

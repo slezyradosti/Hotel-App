@@ -20,5 +20,17 @@ namespace Hotel.Application.Services
 
             return HotelMapper.DomainToDtoEnumaerable(hotels);
         }
+
+        public async Task<HotelDto?> GetHotelById(int hotelId)
+        {
+            var hotel = await _hotelRepository.GetHotelByIdAsync(hotelId);
+
+            if (hotel is null)
+            {
+                return null;
+            }
+
+            return HotelMapper.DomainToDto(hotel);
+        }
     }
 }
