@@ -14,14 +14,19 @@ namespace Hotel.Infrastructure.Repositories
 
         public async Task<IEnumerable<Domain.Hotels.Hotel>> GetAllHotelsAsync()
         {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            };
+
             try
             {
                 var jsonData = await File.ReadAllTextAsync(_filePath);
-                return JsonSerializer.Deserialize<List<Domain.Hotels.Hotel>>(jsonData);
+                return JsonSerializer.Deserialize<IEnumerable<Domain.Hotels.Hotel>>(jsonData, options);
             }
             catch (Exception ex) 
             {
-                Console.WriteLine("HotelRepository GetAllHotels", ex);
+                Console.WriteLine("HotelRepository GetAllHotels", ex.Message);
                 throw ex;
             }
         }

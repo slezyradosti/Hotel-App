@@ -1,5 +1,4 @@
 ﻿using Hotel.Domain.Rooms;
-
 namespace Hotel.Domain.Hotels
 {
     public class Hotel
@@ -9,9 +8,8 @@ namespace Hotel.Domain.Hotels
         public string Location { get; set; }
         public float Rating { get; set; }
         public string ImageUrl { get; set; }
-        public IEnumerable<DateTime> DatesOfTravel { get; set; }
+        public IEnumerable<string> DatesOfTravel { get; set; }
         public string BoardBasis { get; set; }
         public IEnumerable<Room> Rooms { get; set; }
-
     }
 }

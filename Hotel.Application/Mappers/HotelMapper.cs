@@ -12,7 +12,7 @@ namespace Hotel.Application.Mappers
                 Name = hotel.Name,
                 BoardBasis = hotel.BoardBasis,
                 ImageUrl = hotel.ImageUrl,
-                DatesOfTravel = hotel.DatesOfTravel,
+                DatesOfTravel = hotel.DatesOfTravel.Select(DateTime.Parse),
                 Location = hotel.Location,
                 Rating = hotel.Rating,
                 Rooms = hotel.Rooms.Select(x => new RoomDto
@@ -31,7 +31,7 @@ namespace Hotel.Application.Mappers
                 Name = x.Name,
                 BoardBasis = x.BoardBasis,
                 ImageUrl = x.ImageUrl,
-                DatesOfTravel = x.DatesOfTravel,
+                DatesOfTravel = x.DatesOfTravel.Select(DateTime.Parse),
                 Location = x.Location,
                 Rating = x.Rating,
                 Rooms = x.Rooms.Select(h => new RoomDto
