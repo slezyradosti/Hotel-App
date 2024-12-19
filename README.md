@@ -27,12 +27,12 @@ dotnet restore
 
 ### 3. Run the Application
 ```bash
-dotnet run
+dotnet run --project Hotel.API
 ```
 
 ### 4. Test the API
-- Get All Hotels: GET [http://localhost:7140/hotels](https://localhost:7140/hotels)
-- Get Hotel by ID: GET [http://localhost:7140/hotels/{id}](https://localhost:7140/hotels/1) 
+- Get All Hotels: GET http://localhost:5032/hotels
+- Get Hotel by ID: GET http://localhost:5032/hotels/{id}
 
 ### 5. Error Handling
 - 404 Not Found: Hotel ID not found
